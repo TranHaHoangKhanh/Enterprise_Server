@@ -14,7 +14,7 @@ class CommentController {
                 content: req.body.content,
                 anonymousMode: req.body.anonymousMode,
                 idea_id: req.body.idea_id,
-                user_id: req.body.userId
+                user_id: req.body.user_id
             }
             const newComment = await Comment(data)
             const savedComment = await newComment.save()
