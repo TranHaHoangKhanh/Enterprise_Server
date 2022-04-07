@@ -147,10 +147,16 @@ class UserController {
   // [GET] /users
   async getAllUser(req, res, next) {
     try {
-      const users = await User.find()
-                              
-      
-      res.status(200).json(users);
+      const users = await User.find({});
+      let newUsers = [];
+
+      for( const user of users ) {
+        user.role_name = (await Role.findById(user.role_id)).name;
+        user.department_name = (await Department.findById(user.department_id)).name;
+        newUsers.push(user);
+      }
+                            
+      res.status(200).json(newUsers);
     } catch (error) {
       res.status(500).json(error);
     }
