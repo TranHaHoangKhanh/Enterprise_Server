@@ -1,4 +1,4 @@
-# Enterprise_Server
+# We-backup
 
 1. Google Account:
 
@@ -16,4 +16,3 @@
 
 - We using Google API (Gmail API, Drive API) to send mail notification feature and store files feature in requirement.
 - Go to this file: src/config/variables.js to follow the variables
-
