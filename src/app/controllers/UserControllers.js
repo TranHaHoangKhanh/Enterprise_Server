@@ -37,6 +37,10 @@ class UserController {
         try {
             const {username, password} = req.body;
             const user = await User.findOne({username: username});
+
+            user.role_name = (await Role.findById(user.role_id)).name;
+            user.department_name = (await Department.findById(user.department_id)).name;
+
             if (!user) {
                 return res.status(401).json("Username or password is incorrect");
             }
@@ -55,6 +59,8 @@ class UserController {
                     fullname: user["fullname"],
                     email: user["email"],
                     role: user["role_id"],
+                    roleName: user.role_name,
+                    departmentName: user.department_name,
                     uid: user["_id"],
                 });
             } else {
