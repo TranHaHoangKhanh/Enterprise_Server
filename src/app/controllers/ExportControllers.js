@@ -99,9 +99,14 @@ class DownloadController {
             res.status(200).send(csvData)
                 
         } catch (error) {
+            console.log(error)
             res.status(500).json(error)
         }
-    } 
+    }
+
+
+    async zipDownload(req, res, next) {}
+
 }
 
 module.exports = new DownloadController

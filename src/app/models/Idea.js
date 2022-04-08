@@ -21,12 +21,14 @@ const IdeaSchema = new mongoose.Schema({
         thumbsUp: [
             {
                 type: mongoose.Schema.Types.ObjectId,
+                required: false,
                 ref: 'User',
             }
         ],
         thumbsDown: [
             {
                 type: mongoose.Schema.Types.ObjectId,
+                required: false,
                 ref: 'User',
             }
         ],
