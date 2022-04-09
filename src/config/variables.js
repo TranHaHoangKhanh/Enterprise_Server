@@ -8,9 +8,9 @@ module.exports = {
    CLIENT_ID: '1002492005195-ug3faakn073kdadd3vt8l5nvf3oi65hl.apps.googleusercontent.com',
    CLIENT_SECRET: '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',
    REDIRECT_URI: 'https://developers.google.com/oauthplayground',
-   REFRESH_TOKEN: '1//04MS5mRzoHxyvCgYIARAAGAQSNwF-L9IrzFhvU5-aBHOTMoIjal0ZsyaumVqZjcScDdxn9c91swNRBj2epw95Dnk8Yw_7nx_lOJU',
+   REFRESH_TOKEN: '1//04Geaz2q1Tb8bCgYIARAAGAQSNwF-L9IrAK-yaaxF9hIBDQYlgzyDHjq2ARk__-9VPd4YEls2gLEttEJ3WGBd4UPIOZ6dS4W64iU',
 
    // GOOGLE DRIVE API
-   REFRESH_TOKEN_DRIVE: '1//04iM_PPLCIpl8CgYIARAAGAQSNwF-L9IrDvabW6u2d-5A3QT9OTG8Z09D5eqsfWarRaBmQmRyscpWW5euOP0sdiSzeNvNap_cM5A',
-  
+   REFRESH_TOKEN_DRIVE: '1//041CxfAvXs9iwCgYIARAAGAQSNwF-L9Iro8Ga_HB-OIBeLvgQOxx1aAWnmG5YBT_HTgv-8wu-B35gibIOT903sx-x-d-oPQ9dbqI',
+
 }
