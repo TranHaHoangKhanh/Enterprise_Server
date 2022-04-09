@@ -2,13 +2,18 @@ const Comment = require('../models/Comment')
 const Idea = require('../models/Idea')
 const User = require('../models/User')
 const notificationMail = require('../../util/mail')
+const Notify = require("../models/Notify");
 class CommentController {
 
     // [POST] /comment
     async createComment(req, res, next){
 
         try {
-            const ideaId = req.body.idea_id 
+            const ideaId = req.body.idea_id
+
+            const idea = await Idea.findOne({_id:ideaId });
+
+            const ideaOwner = await User.findOne({_id: idea.user_id})
            
             const data = {
                 content: req.body.content,
@@ -16,11 +21,18 @@ class CommentController {
                 idea_id: req.body.idea_id,
                 user_id: req.body.user_id
             }
+
+
+
             const newComment = await Comment(data)
             const savedComment = await newComment.save()
            
             //? Check if have a comment in idea
             const comment = await Comment.find({replierMode: false})
+
+            const newNotify = new Notify({forUser: ideaOwner._id, message: `New Comment Add\n ${data.content}`,detailPage: `/ideas/${data.idea_id}`  })
+            await newNotify.save()
+
 
             if(comment.length) {
                 const idea = await Idea.findById(ideaId)
@@ -35,6 +47,7 @@ class CommentController {
             res.status(200).json(savedComment)
 
         } catch (error) {
+            console.log(error)
             res.status(500).json(error)
         }
     }

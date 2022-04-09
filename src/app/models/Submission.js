@@ -5,8 +5,8 @@ const SubmissionSchema = new mongoose.Schema({
     name: {type: String, required: true},
     description: {type: String, required: true},
     closure_date: {type: Date, required: true},
-    final_closure_date: {type: Date, required: true}
-
+    final_closure_date: {type: Date, required: false},
+    academicYear: {type: String, required: true},
 }, {timestamps: true}
 )
 
