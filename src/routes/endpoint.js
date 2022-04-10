@@ -16,6 +16,8 @@ const fileController = require("../app/controllers/FileControllers");
 const userController = require("../app/controllers/UserControllers");
 const downloadController = require("../app/controllers/ExportControllers");
 const folderController = require("../app/controllers/FolderControllers");
+const notifyController = require("../app/controllers/NotifyController");
+const academicYearController = require("../app/controllers/AcademicYearController");
 
 //? Session
 const {
@@ -119,5 +121,17 @@ router.get("/icons", iconController.getAllIcon); //? Get all icons
 //* Export CSV file
 router.get("/csv/download/:submissionId", downloadController.csvDownload); //? Export csv
 router.get("/zip/download/:ideaId", downloadController.zipDownload); //? Export zip
+
+
+//* Notify
+router.post("/notify", notifyController.createNotify); //? Export csv
+router.get("/notify/:forUser", notifyController.getNotifyOfUser); //? Export csv
+router.get("/notify", notifyController.getAllNotify); //?
+
+
+//* Academic Year
+router.post("/academicYear", academicYearController.academicYearCreate); //? Export csv
+router.get("/academicYear", academicYearController.getAllAcademicYear); //? Export csv
+
 
 module.exports = router;

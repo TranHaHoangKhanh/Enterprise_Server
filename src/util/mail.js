@@ -20,7 +20,7 @@ async function notificationMail(fullname, email, option, topic) {
             service: 'gmail',
             auth: {
                 type: 'OAuth2',
-                user: 'webackup2022@gamil.com',
+                user: 'webackup2022@gmail.com',
                 clientId: CLIENT_ID,
                 clientSecret: CLIENT_SECRET,
                 refreshToken: REFRESH_TOKEN,
@@ -69,6 +69,7 @@ async function notificationMail(fullname, email, option, topic) {
         }
 
     } catch (error) {
+        console.log(error)
         return error
     }
         
