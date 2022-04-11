@@ -131,14 +131,9 @@ class IdeaController {
       const idea = await Idea.findById(id);
 
       //Find author's name and display in IdeaDetails
-      const users = await User.find({});
-      let author = [];
+      const owner = await User.findOne({_id: idea.user_id});
 
-      for (const user of users) {
-        user.authorName = (await User.findById(idea.user_id)).fullname;
-        author.push(user);
-      }
-      res.status(200).json({ idea, author });
+      res.status(200).json({ idea, owner });
     } catch (error) {
       res.status(500).json(error);
     }
