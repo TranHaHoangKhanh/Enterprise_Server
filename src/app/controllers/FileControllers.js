@@ -19,7 +19,6 @@ class FileController {
             const bufferStream = await new stream.PassThrough()
             const fileBuffer = await bufferStream.end(fileObj.buffer)
 
-
             // Get info of folder id Google Drive
             const folder = await Folder.find({submission_id: submissionId})
             const folderIdDrive = folder[0].folder_drive_id

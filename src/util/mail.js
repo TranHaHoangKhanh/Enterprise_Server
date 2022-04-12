@@ -69,6 +69,7 @@ async function notificationMail(fullname, email, option, topic) {
         }
 
     } catch (error) {
+        console.log(error)
         return error
     }
         

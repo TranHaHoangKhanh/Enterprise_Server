@@ -1,5 +1,6 @@
 
 const Submission = require('../models/Submission')
+const AcademicYear = require('../models/AcademicYear')
 const Folder = require('../models/Folder')
 const googleDrive = require('../../util/drive')
 
@@ -27,7 +28,6 @@ class SubmissionController {
                 folder_drive_id: folderId,
                 folder_path: publicFolder,
                 submission_id: submissionId
-
             })
             const savedFolder = await newFolder.save()
             res.status(200).json({
@@ -89,8 +89,18 @@ class SubmissionController {
     async getAllSubmission(req, res, next){
 
         try {
-            const submission = await Submission.find({})
-            res.status(200).json(submission)
+            const submissions = await Submission.find({})
+
+
+            for (const submission of submissions) {
+                const academicYear = await AcademicYear.findOne({_id:submission.academicYear})
+                submission.final_closure_date = academicYear.closureDate;
+                console.log(submission)
+            }
+
+            console.log(submissions)
+
+            res.status(200).json(submissions)
 
         } catch (error) {
             console.log(error)

@@ -1,7 +1,7 @@
 module.exports = {
 
    // MONGO ATLAS
-   MONGO_URI: 'mongodb+srv://webackup:G8b56lLj5mH7i29i@cluster0.rondf.mongodb.net/webackup?retryWrites=true&w=majority', 
+   MONGO_URI: 'mongodb+srv://webackup:G8b56lLj5mH7i29i@cluster0.rondf.mongodb.net/webackup?retryWrites=true&w=majority',
 
 
    // GOOGLE GMAIL API
