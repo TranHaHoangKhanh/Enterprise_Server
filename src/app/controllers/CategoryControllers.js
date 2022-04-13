@@ -41,7 +41,7 @@ class CategoryController {
             const cateId = req.params.id
             const idea = await Idea.find({ category_id: cateId})
 
-            if (idea.length > 0){
+            if (!idea){
                 res.status(200).json({
                     message: "Category can't be deleted because it has already been used."
                 })
