@@ -86,9 +86,8 @@ class DepartmentController {
             }
 
             const mostView =  allIdeaOfThisDepartment.sort((a,b)=>{return b.total_view - a.total_view})[0];
-            const mostLike =  allIdeaOfThisDepartment.sort((a,b)=>{return b.thumbsUp.length - a.thumbsDown.length})[0];
+            const mostLike =  allIdeaOfThisDepartment.sort((a,b)=>{return b.thumbsUp.length - a.thumbsUp.length})[0];
             const lasted =  allIdeaOfThisDepartment.sort((a,b)=>{return b.createdAt - a.createdAt})[0];
-
 
 
             console.log(lasted);
