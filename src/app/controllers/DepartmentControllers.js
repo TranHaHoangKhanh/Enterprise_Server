@@ -1,4 +1,5 @@
 const Department = require('../models/Department')
+const Comment = require('../models/Comment')
 const Idea = require('../models/Idea')
 const User = require('../models/User')
 
@@ -88,11 +89,13 @@ class DepartmentController {
             const mostView =  allIdeaOfThisDepartment.sort((a,b)=>{return b.total_view - a.total_view})[0];
             const mostLike =  allIdeaOfThisDepartment.sort((a,b)=>{return b.thumbsUp.length - a.thumbsUp.length})[0];
             const lasted =  allIdeaOfThisDepartment.sort((a,b)=>{return b.createdAt - a.createdAt})[0];
+            const totalIdea = allIdeaOfThisDepartment.length;
 
+            const lastedComment = await Comment.find({idea_id: lasted._id});
 
-            console.log(lasted);
+            console.log(lastedComment);
 
-            res.status(200).json({mostView: mostView, mostLike: mostLike, lasted: lasted})
+            res.status(200).json({mostView: mostView, mostLike: mostLike, lasted: lasted, lastedComment: lastedComment, totalIdea:totalIdea})
 
         } catch (error) {
             console.log(error);
