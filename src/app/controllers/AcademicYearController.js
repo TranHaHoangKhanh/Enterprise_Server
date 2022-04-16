@@ -1,8 +1,4 @@
-
 const AcademicYear = require('../models/AcademicYear')
-
-
-
 class AcademicYearController {
 
     // [POST] /academicYear
@@ -38,6 +34,17 @@ class AcademicYearController {
         } catch (error) {
             res.status(500).json(error)
         }
+    }
+
+     // [DELETE] /academicYear/:id
+    async deleteAcademicYear(req, res, next){
+        AcademicYear.deleteOne({ _id: req.params.id})
+            .then(() => res.json({
+                message: 'The AcademicYear successfully deleted',
+                _id: req.params.id
+            }),
+        )
+        .catch(next);
     }
 }
 
