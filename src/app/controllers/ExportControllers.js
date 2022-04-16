@@ -37,17 +37,18 @@ class DownloadController {
 
         try {
             const ideas = await Idea.find({submission_id: submissionId})
-            console.log(ideas)
             let csv = [];
             for (const idea of ideas) {
 
                 // Get id
                 const userId = idea.user_id
+                console.log(userId)
                 const submissionId = idea.submission_id
 
 
                 // Find info 
                 const userInfo = await User.findById(userId)
+
                 const email = userInfo.email
                 const fullName = userInfo.fullname
                 const departmentName = userInfo.department_name

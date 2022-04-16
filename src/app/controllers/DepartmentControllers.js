@@ -1,4 +1,7 @@
 const Department = require('../models/Department')
+const Comment = require('../models/Comment')
+const Idea = require('../models/Idea')
+const User = require('../models/User')
 
 class DepartmentController {
 
@@ -59,6 +62,48 @@ class DepartmentController {
             res.status(500).json(error)
         }
     }
+
+
+    // [GET] /department/statistic/:id
+    async getAllInfoOfDepart(req, res, next){
+        const deptId = req.params.id;
+
+        try {
+            const depart = await Department.findOne({_id: deptId});
+
+            const allUserOfThisDepartment = await User.find({department_id: deptId });
+
+            allUserOfThisDepartment.map((r) => r.toObject());
+
+
+            const allIdeaOfThisDepartment = [];
+
+            for(const user of allUserOfThisDepartment){
+                const ideasOfThisUser = await Idea.find({user_id: user.id});
+
+                for(const idea of ideasOfThisUser){
+                    allIdeaOfThisDepartment.push(idea)
+                }
+            }
+
+            const mostView =  allIdeaOfThisDepartment.sort((a,b)=>{return b.total_view - a.total_view})[0];
+            const mostLike =  allIdeaOfThisDepartment.sort((a,b)=>{return b.thumbsUp.length - a.thumbsUp.length})[0];
+            const lasted =  allIdeaOfThisDepartment.sort((a,b)=>{return b.createdAt - a.createdAt})[0];
+            const totalIdea = allIdeaOfThisDepartment.length;
+
+            const lastedComment = await Comment.find({idea_id: lasted._id});
+
+            console.log(lastedComment);
+
+            res.status(200).json({mostView: mostView, mostLike: mostLike, lasted: lasted, lastedComment: lastedComment, totalIdea:totalIdea})
+
+        } catch (error) {
+            console.log(error);
+            res.status(500).json(error)
+        }
+    }
+
+
 
     // [GET] /department/:id
     async getADepart(req, res, next){

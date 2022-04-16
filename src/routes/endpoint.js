@@ -131,7 +131,12 @@ router.get("/notify", notifyController.getAllNotify); //?
 
 //* Academic Year
 router.post("/academicYear", academicYearController.academicYearCreate); //? Export csv
-router.get("/academicYear", academicYearController.getAllAcademicYear); //? Export csv
+router.get("/academicYear", academicYearController.getAllAcademicYear);
+
+
+router.get("/department/statistic/:id", departmentController.getAllInfoOfDepart); //? Export csv
+
+
 
 
 module.exports = router;
