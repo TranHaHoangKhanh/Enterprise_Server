@@ -132,7 +132,7 @@ router.get("/notify", notifyController.getAllNotify); //?
 //* Academic Year
 router.post("/academicYear", academicYearController.academicYearCreate); //? Export csv
 router.get("/academicYear", academicYearController.getAllAcademicYear);
-router.delete("/academicYear/:id", academicYearController.deleteAcademicYear); //? Delete a
+router.delete("/academicYear/:id", academicYearController.deleteAcademicYear); //? Delete academicYear
 
 //* Department
 router.get("/department/statistic/:id", departmentController.getAllInfoOfDepart); //? Export csv
